@@ -9,11 +9,11 @@
 		<link href="../../../_app/immutable/chunks/qoL-fi2n.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/_lMV_EUJ.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CjDj8vAw.js" rel="modulepreload">
-		<link href="../../../_app/immutable/entry/app.C6St8X60.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/app.CKP-qr1E.js" rel="modulepreload">
 		<link href="../../../_app/immutable/nodes/0.Bkg1Qfw7.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/DK3Fl9T5.js" rel="modulepreload">
-		<link href="../../../_app/immutable/nodes/5.CwupZzhX.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/BrfeRE9d.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/5.CtrB4ffi.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/DCfzrlKl.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BLAIod9c.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CVBzP17p.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/hRRAQ6uA.js" rel="modulepreload">
@@ -25,28 +25,29 @@
   <body>
     <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · three problems, three tickets</h1> <p class="meta svelte-e2jw2j"><span>owner <b>kamilgaborek</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-10-29 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> says one issue, one fix. It holds three problems. All three arrive
 under the same generic subject lines (“Date is wrong”, “Wrong day on the invite”), so the subject rule
-(<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>) merged them into one ticket. Each one now has a ticket of its own, with its count.</p> <aside class="warn svelte-17bri61"><!---->The queued parser fix closes only the first row. The other two keep coming in after it ships.<!----></aside><!----> <h2>The problems</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports merged into #4471 (427 rows in the export, 15 of them
+(<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>) merged them into one ticket. Each one now has a ticket of its own, with its count.</p> <aside class="warn svelte-17bri61"><!---->The parser fix closed only the first row. The form behind the second is retired. The third is still open.<!----></aside><!----> <h2>The problems</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports merged into #4471 (427 rows in the export, 15 of them
   repeats) · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr class="svelte-1op6c6"><td class="svelte-1op6c6"><code>parser</code></td><td class="svelte-1op6c6">379<!--[0--><sup>*</sup><!--]--></td><td class="svelte-1op6c6">11</td><td class="svelte-1op6c6">2026-04-01 → 2026-10-04</td><td class="svelte-1op6c6"><!--[0--><a href="https://github.com/kamilgaborek/support-kb/issues/1">#1</a><!--]--></td></tr><tr class="svelte-1op6c6"><td class="svelte-1op6c6"><code>hint</code></td><td class="svelte-1op6c6">33<!--[-1--><!--]--></td><td class="svelte-1op6c6">3</td><td class="svelte-1op6c6">2026-04-17 → 2026-09-22</td><td class="svelte-1op6c6"><!--[0--><a href="https://github.com/kamilgaborek/support-kb/issues/2">#2</a><!--]--></td></tr><tr class="svelte-1op6c6"><td class="svelte-1op6c6"><code>one-day</code></td><td class="svelte-1op6c6">5<!--[-1--><!--]--></td><td class="svelte-1op6c6">5</td><td class="svelte-1op6c6">2026-04-02 → 2026-10-04</td><td class="svelte-1op6c6"><!--[0--><a href="https://github.com/kamilgaborek/support-kb/issues/3">#3</a><!--]--></td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-1op6c6">* 5 of the 379 <code>parser</code> reports read as a one-day move. They are counted where the desk files them, under <code>parser</code>, and again in the <code>one-day</code> row.</p><!--]--><!--[-1--><!--]--><!--[-1--><!--]--><!--]--><!----> <ul><li><strong>parser.</strong> The shared parser reads every date month first. Every tenant on file writes the day
 first, so day and month swap.</li> <li><strong>hint.</strong> <code>booking-v3</code> prints <code>MM/DD/YYYY</code> under its date field. People type what it says,
 and the form reads it day first. The date is wrong before the parser sees it.</li> <li><strong>one-day.</strong> The date moves by one day, not by a swap: Tuesday becomes Monday, Lisbon and
 Toronto get different days for the same meeting. That looks like a time zone. The desk already
-noted these reports; until now they were only a footnote under the parser.</li></ul> <h2>How the reports were split</h2> <ul><li>Cause by tenant, not by intake tag: the tag is a guess from the reporter’s browser, and for
+noted these reports; until now they were only a footnote under the parser.</li></ul> <h2>Where they ended</h2> <p>Engineering closed #4471 on 5 October.</p> <ul><li><strong>parser</strong> (<a href="https://github.com/kamilgaborek/support-kb/issues/1" rel="nofollow">#1</a>): fixed, “fix(dates): parse dd/mm for eu locales”. Closed as completed.</li> <li><strong>hint</strong> (<a href="https://github.com/kamilgaborek/support-kb/issues/2" rel="nofollow">#2</a>): won’t fix, because the booking-v3 form is retired. Closed as not planned.</li> <li><strong>one-day</strong> (<a href="https://github.com/kamilgaborek/support-kb/issues/3" rel="nofollow">#3</a>): not in the engineering update, and the parser fix does
+not touch a time zone shift. Still open. Send new one-day reports there, not to #4471.</li></ul> <h2>How the reports were split</h2> <ul><li>Cause by tenant, not by intake tag: the tag is a guess from the reporter’s browser, and for
 this ticket it is wrong often enough to matter. The rules are in <code>causes.ts</code> and <code>problems.ts</code>.</li> <li>The one-day reports come from the desk’s notes, and their text agrees: none of them names a
 swapped day and month.</li> <li>The export repeats rows across pages. Each report counts once, by id.</li> <li>Counts follow the desk’s own view of #4471: a report counts under the cause its tenant files it
 under. The one-day reports are therefore in the parser count as well as in their own row.</li></ul> <h2>For the desk</h2> <ul><li>Read the body before merging when the subject is generic, like “wrong date” or “date is wrong”.</li> <li>One cause per ticket. The same symptom can have more than one cause.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-J523-36YQ</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
 			
 			<script>
 				{
-					__sveltekit_15877kr = {
+					__sveltekit_meyw2a = {
 						base: new URL("../../..", location).pathname.slice(0, -1),
-						version: "1793285793088"
+						version: "1793285957843"
 					};
 
 					const element = document.currentScript.parentElement;
 
 					import("../../../_app/immutable/entry/start.BnmoL42I.js").then(async (kit) => {
-						kit.init(__sveltekit_15877kr);
-						const app = await import("../../../_app/immutable/entry/app.C6St8X60.js");
+						kit.init(__sveltekit_meyw2a);
+						const app = await import("../../../_app/immutable/entry/app.CKP-qr1E.js");
 						kit.start(app, element, {
 							node_ids: [0, 5],
 							data: [null,null],

@@ -21,7 +21,7 @@ under the same generic subject lines ("Date is wrong", "Wrong day on the invite"
 ([decision 0001](/kb/decisions/0001-dedupe-by-subject)) merged them into one ticket. Each one now has a ticket of its own, with its count.
 
 <Callout kind="warn">
-The queued parser fix closes only the first row. The other two keep coming in after it ships.
+The parser fix closed only the first row. The form behind the second is retired. The third is still open.
 </Callout>
 
 ## The problems
@@ -35,6 +35,15 @@ The queued parser fix closes only the first row. The other two keep coming in af
 - **one-day.** The date moves by one day, not by a swap: Tuesday becomes Monday, Lisbon and
   Toronto get different days for the same meeting. That looks like a time zone. The desk already
   noted these reports; until now they were only a footnote under the parser.
+
+## Where they ended
+
+Engineering closed #4471 on 5 October.
+
+- **parser** ([#1](https://github.com/kamilgaborek/support-kb/issues/1)): fixed, "fix(dates): parse dd/mm for eu locales". Closed as completed.
+- **hint** ([#2](https://github.com/kamilgaborek/support-kb/issues/2)): won't fix, because the booking-v3 form is retired. Closed as not planned.
+- **one-day** ([#3](https://github.com/kamilgaborek/support-kb/issues/3)): not in the engineering update, and the parser fix does
+  not touch a time zone shift. Still open. Send new one-day reports there, not to #4471.
 
 ## How the reports were split
 
