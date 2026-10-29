@@ -1,0 +1,52 @@
+---
+layout: runbook
+title: '#4471 · three problems, three tickets'
+owner: kamilgaborek
+status: open
+reviewed: 2026-10-29
+signature: 'v1.eyJzdWIiOiIzMDI0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyODQ2NDIsImV4cCI6MTc5MzM3MTA0Mn0.wALzBlr-txGjKxvx0cSNlVeMWqmvDDuBwg_JhEpGAgk'
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const repo = 'https://github.com/kamilgaborek/support-kb/issues';
+  const tickets = { parser: `${repo}/1`, hint: `${repo}/2`, 'one-day': `${repo}/3` };
+</script>
+
+[#4471](/kb/incidents/4471) says one issue, one fix. It holds three problems. All three arrive
+under the same generic subject lines ("Date is wrong", "Wrong day on the invite"), so the subject rule
+([decision 0001](/kb/decisions/0001-dedupe-by-subject)) merged them into one ticket. Each one now has a ticket of its own, with its count.
+
+<Callout kind="warn">
+The queued parser fix closes only the first row. The other two keep coming in after it ships.
+</Callout>
+
+## The problems
+
+<ProblemTable ticket={4471} {tickets} />
+
+- **parser.** The shared parser reads every date month first. Every tenant on file writes the day
+  first, so day and month swap.
+- **hint.** `booking-v3` prints `MM/DD/YYYY` under its date field. People type what it says,
+  and the form reads it day first. The date is wrong before the parser sees it.
+- **one-day.** The date moves by one day, not by a swap: Tuesday becomes Monday, Lisbon and
+  Toronto get different days for the same meeting. That looks like a time zone. The desk already
+  noted these reports; until now they were a footnote under the parser.
+
+## How the reports were split
+
+- Cause by tenant, not by intake tag: the tag is a guess from the reporter's browser, and for
+  this ticket it is wrong often enough to matter. The rules are in `causes.ts` and `problems.ts`.
+- The one-day reports come from the desk's notes, and their text agrees: none of them names a
+  swapped day and month.
+- The export repeats rows across pages. Each report counts once, by id.
+
+## For the desk
+
+- Read the body before merging when the subject is generic, like "wrong date" or "date is wrong".
+- One cause per ticket. The same symptom can have more than one cause.
+
+<RenderStamp {signature} />
