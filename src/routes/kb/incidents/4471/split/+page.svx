@@ -34,7 +34,7 @@ The queued parser fix closes only the first row. The other two keep coming in af
   and the form reads it day first. The date is wrong before the parser sees it.
 - **one-day.** The date moves by one day, not by a swap: Tuesday becomes Monday, Lisbon and
   Toronto get different days for the same meeting. That looks like a time zone. The desk already
-  noted these reports; until now they were a footnote under the parser.
+  noted these reports; until now they were only a footnote under the parser.
 
 ## How the reports were split
 
@@ -43,6 +43,8 @@ The queued parser fix closes only the first row. The other two keep coming in af
 - The one-day reports come from the desk's notes, and their text agrees: none of them names a
   swapped day and month.
 - The export repeats rows across pages. Each report counts once, by id.
+- Counts follow the desk's own view of #4471: a report counts under the cause its tenant files it
+  under. The one-day reports are therefore in the parser count as well as in their own row.
 
 ## For the desk
 
